@@ -194,6 +194,7 @@ const SecaoEscolherBaixocaixa = styled.div`
     gap: .5rem;
     border-radius: 25px;
     cursor: pointer;
+    box-shadow: 0 0 15px #afafaf;
 `
 
 const SecaoEscolherBaixocaixaTitulo = styled.h1`
