@@ -61,11 +61,14 @@ const ConteudoInicioCaixaDentroAncora = styled.a`
     font-size: 1.1rem;
     font-weight: 600;
     background-color: #2d5c2dff;
-    width: 29%;
+    width: 31%;
     text-align- center;
     padding: .6rem .8rem .6rem 1rem;
     border-radius: 5px;
     text-align: center;
+    &:hover {
+        background-color: #004d00;
+    }
 `
 
 const SecaoTopoDireita = styled.div`
@@ -124,6 +127,7 @@ const SecaoGarantirCaixaDentro = styled.div`
     background-color: #efecf5ff;
     border-radius: 15px;
     padding: 1.3rem;
+    cursor: pointer;
 `
 const SecaoGarantirCaixaDentroTitulo = styled.h1`
     font-size: 1.4rem;
@@ -189,6 +193,7 @@ const SecaoEscolherBaixocaixa = styled.div`
     display: grid;
     gap: .5rem;
     border-radius: 25px;
+    cursor: pointer;
 `
 
 const SecaoEscolherBaixocaixaTitulo = styled.h1`
@@ -294,7 +299,7 @@ const SecaoRodape = styled.footer`
 const SecaoRodapeLogo = styled.h1`
     margin-right: 5rem;
 `
-const SecaoRodapeParagrafoUm= styled.p`
+const SecaoRodapeParagrafoUm = styled.p`
     margin-top: -3rem;
     margin-bottom: 3rem;
     text-transform: uppercase;
@@ -302,6 +307,22 @@ const SecaoRodapeParagrafoUm= styled.p`
 const SecaoRodapeParagrafoDois = styled.p`
     margin-bottom: 1rem;
 `
+
+
+// FUNCAO TRAZER DE LADO 
+function mouseScroll() {
+    const scroll = document.querySelectorAll('.js-scroll')
+    const height = window.innerHeight * 0.6
+    scroll[0].classList.add('ativo')
+    scroll.forEach((section) => {
+        const sectionTop = (section.getBoundingClientRect().top - height) < 0
+        if (sectionTop) {
+            section.classList.add('ativo')
+        }
+    })
+}
+
+window.addEventListener('scroll', mouseScroll)
 
 function Pagina() {
     return (
@@ -325,8 +346,8 @@ function Pagina() {
             </SecaoTopo>
             {/* FIM SECAO PARTE DE CIMA TOPO */}
             {/* INICIO SECAO PODEMOS AJUDAR */}
-            <SecaoAjudar>
-                <SecaoAjudarCaixa>
+            <SecaoAjudar className="js-scroll">
+                <SecaoAjudarCaixa className="ladoEsquerdo">
                     <SecaoAjudarTitulo>Como podemos te ajudar?</SecaoAjudarTitulo>
                     <SecaoAjudarParagrafo>Experiência em todos os tipos de casos. Saiba se você deixou de receber algum <b>direito</b>, <b>hora-extra</b>, <b>férias</b>, <b>13º</b>, <b>FGTS</b>, <b>rescisão</b>, <b>seguro desemprego</b>, <b>acidente de trabalho</b>, <b>dentre outros.</b></SecaoAjudarParagrafo>
                     <SecaoAjudarParagrafo>Atendemos a todas as demandas da área Trabalhista.</SecaoAjudarParagrafo>
@@ -334,7 +355,7 @@ function Pagina() {
                     <SecaoAjudarParagrafo>Fale com nosso especialista para mais informações.</SecaoAjudarParagrafo>
                     <ConteudoInicioCaixaDentroAncora href="https://api.whatsapp.com/send?phone=5535997631949"><FontAwesomeIcon icon={faWhatsapp} className="whatsappIcon" /> Entrar em contato</ConteudoInicioCaixaDentroAncora>
                 </SecaoAjudarCaixa>
-                <div>
+                <div className="ladoDireito">
                     <SecaoAjudarImagem src={advogadoPapel} alt="" />
                 </div>
             </SecaoAjudar>
@@ -346,27 +367,27 @@ function Pagina() {
                     <SecaoGarantirCimaParagrafo>Todos os nossos casos passam pelo nosso rigoroso processo. Assim, garantiremos os melhores resultados possíveis para a sua causa com os seguintes passos:</SecaoGarantirCimaParagrafo>
                 </SecaoGarantirCima>
                 <SecaoGarantirCaixa>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>1. Consulta Inicial</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>Aqui, você discute sua situação legal com um advogado trabalhista. Durante essa conversa, você fornecerá informações sobre o seu caso e discutirá seus direitos, opções legais e possíveis estratégias a serem adotadas.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>2. Análise e investigação</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>Nossos Advogados realizarão uma análise mais aprofundada do seu caso. Isso pode envolver a revisão de documentos relevantes, coleta de evidências, pesquisa jurídica e a obtenção de informações adicionais necessárias para compreender totalmente a situação.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>3. Estratégia</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>Com base na análise do caso, desenvolveremos uma estratégia legal personalizada para buscar a solução mais favorável. Isso pode incluir ações como negociações, mediação, conciliação ou a preparação para um processo judicial.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>4. Representação Legal</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>Se o caso exigir uma ação judicial, iremos representá-lo perante o tribunal. Isso envolve a preparação de documentos legais, apresentação de petições, contestações e outros requerimentos necessários. Além disso, o advogado representará seus interesses durante audiências, julgamentos ou sessões de mediação.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>5. Resolução do Caso</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>O objetivo do advogado é alcançar uma resolução favorável para o seu caso. Isso pode ser por meio de um acordo extrajudicial, uma decisão judicial ou qualquer outro resultado que proteja seus direitos e interesses.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
-                    <SecaoGarantirCaixaDentro>
+                    <SecaoGarantirCaixaDentro className="item">
                         <SecaoGarantirCaixaDentroTitulo>6. Acompanhamento e Orientação Contínuos</SecaoGarantirCaixaDentroTitulo>
                         <SecaoGarantirCaixaParagrafo>Os serviços podem se estender além da resolução do caso. Eles podem fornecer orientação contínua em relação a quaisquer implicações legais futuras, esclarecer dúvidas adicionais e ajudá-lo a entender seus direitos e obrigações legais.</SecaoGarantirCaixaParagrafo>
                     </SecaoGarantirCaixaDentro>
@@ -374,7 +395,7 @@ function Pagina() {
             </SecaoGarantir>
             {/* FIM SECAO PARTE GARANTIR DIREITO */}
             {/* INICIO SECAO CONHEÇA */}
-            <SecaoConheca>
+            <SecaoConheca className="js-scroll">
                 <SecaoConhecaCima>
                     <SecaoConhecaCimaTitulo>Conheça nossos Advogados</SecaoConhecaCimaTitulo>
                     <SecaoConhecaCimaParagrafo>Especialistas preparados para atender o seu caso.</SecaoConhecaCimaParagrafo>
@@ -393,26 +414,32 @@ function Pagina() {
                     <SecaoEscolherCimaParagrafo>Temos ampla experiência com Direito Trabalhista. Estamos sempre defendendo e buscando os direitos de nossos clientes, prezando sempre pela ética e honestidade.</SecaoEscolherCimaParagrafo>
                 </SecaoEscolherCima>
                 <SecaoEscolherBaixo>
-                    <SecaoEscolherBaixocaixa>
-                        <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
-                        <SecaoEscolherBaixocaixaParagrafo>ATENDIMENTO PERSONALIZADO</SecaoEscolherBaixocaixaParagrafo>
-                        <p>Atendimento rápido e eficiente, 100% focado nas necessidades de cada cliente.</p>
+                    <SecaoEscolherBaixocaixa className="item">
+                        <div>
+                            <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
+                            <SecaoEscolherBaixocaixaParagrafo>ATENDIMENTO PERSONALIZADO</SecaoEscolherBaixocaixaParagrafo>
+                            <p>Atendimento rápido e eficiente, 100% focado nas necessidades de cada cliente.</p>
+                        </div>
                     </SecaoEscolherBaixocaixa>
-                    <SecaoEscolherBaixocaixa>
-                        <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
-                        <SecaoEscolherBaixocaixaParagrafo>TRANSPARÊNCIA E ÉTICA</SecaoEscolherBaixocaixaParagrafo>
-                        <p>Mantemos nossos clientes informados em todas as etapas do processo, com total clareza e honestidade.</p>
+                    <SecaoEscolherBaixocaixa className="item">
+                        <div>
+                            <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
+                            <SecaoEscolherBaixocaixaParagrafo>TRANSPARÊNCIA E ÉTICA</SecaoEscolherBaixocaixaParagrafo>
+                            <p>Mantemos nossos clientes informados em todas as etapas do processo, com total clareza e honestidade.</p>
+                        </div>
                     </SecaoEscolherBaixocaixa>
-                    <SecaoEscolherBaixocaixa>
-                        <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
-                        <SecaoEscolherBaixocaixaParagrafo>CLIENTES DE SUCESSO</SecaoEscolherBaixocaixaParagrafo>
-                        <p>Já ajudamos muitos clientes a terem acesso a seus direitos, podemos ajudar você.</p>
+                    <SecaoEscolherBaixocaixa className="item">
+                        <div>
+                            <SecaoEscolherBaixocaixaTitulo>100%</SecaoEscolherBaixocaixaTitulo>
+                            <SecaoEscolherBaixocaixaParagrafo>CLIENTES DE SUCESSO</SecaoEscolherBaixocaixaParagrafo>
+                            <p>Já ajudamos muitos clientes a terem acesso a seus direitos, podemos ajudar você.</p>
+                        </div>
                     </SecaoEscolherBaixocaixa>
                 </SecaoEscolherBaixo>
             </SecaoEscolher>
             {/* FIM SECAO ESCOLHER */}
             {/* INICIO SECAO ENCAIXA */}
-            <SectionEncaixa>
+            <SectionEncaixa className="js-scroll">
                 <SectionEncaixaCima>
                     <SectionEncaixaCimaTitulo>Não sabe se você se encaixa?
                         Entre em contato com nossos especialistas e tire suas dúvidas</SectionEncaixaCimaTitulo>
@@ -430,12 +457,12 @@ function Pagina() {
                 <div>
                     <SecaoLocalizacaoCimaTitulo>Localização</SecaoLocalizacaoCimaTitulo>
                     <SecaoLocalizacaoCimaParagrafo>Estamos prontos para atendê-lo</SecaoLocalizacaoCimaParagrafo>
-                    <SecaoLocalizacaoCimaMapa  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19047708.454670496!2d-60.07197403930594!3d-11.44835424588271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48e91c473de67%3A0xf3262dbb32890677!2sAv.%20Gov.%20Jos%C3%A9%20Malcher%2C%20153%20-%20Nazar%C3%A9%2C%20Bel%C3%A9m%20-%20PA%2C%2066035-065!5e0!3m2!1spt-BR!2sbr!4v1753193880834!5m2!1spt-BR!2sbr" width="600" height="450"  loading="lazy" ></SecaoLocalizacaoCimaMapa>
+                    <SecaoLocalizacaoCimaMapa src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19047708.454670496!2d-60.07197403930594!3d-11.44835424588271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48e91c473de67%3A0xf3262dbb32890677!2sAv.%20Gov.%20Jos%C3%A9%20Malcher%2C%20153%20-%20Nazar%C3%A9%2C%20Bel%C3%A9m%20-%20PA%2C%2066035-065!5e0!3m2!1spt-BR!2sbr!4v1753193880834!5m2!1spt-BR!2sbr" width="600" height="450" loading="lazy" ></SecaoLocalizacaoCimaMapa>
                 </div>
                 <SecaoLoalizacaoBaixo>
                     <SecaoLocalizacaoBaixoTitulo>Deixe uma mensagem</SecaoLocalizacaoBaixoTitulo>
-                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Nome"/>
-                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Telefone"/>
+                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Nome" />
+                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Telefone" />
                     <SecaoLoalizacaoBaixoTArea name="" id="" rows={6} cols={100} placeholder="Digite uma mensagem"></SecaoLoalizacaoBaixoTArea>
                     <SecaoLoalizacaoBaixoEnviar href="">Enviar</SecaoLoalizacaoBaixoEnviar>
                 </SecaoLoalizacaoBaixo>
