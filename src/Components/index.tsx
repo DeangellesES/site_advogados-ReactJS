@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import emailjs from '@emailjs/browser'
+import { useState } from "react"
 
 import logo from "./assets/logo.png"
 import advogado from "./assets/advogada.png"
@@ -325,7 +327,39 @@ function mouseScroll() {
 
 window.addEventListener('scroll', mouseScroll)
 
+
+
 function Pagina() {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+
+    function sendEmail(e) {
+        e.preventDefault()
+
+        if (name === '' || email === '' || message === '') {
+            alert("Preencha todos os campos")
+            return
+        }
+
+        const templateParams = {
+            from_name: name,
+            message: message,
+            email: email
+        }
+
+        emailjs.send("service_emailmessage", "template_n7cdn8f", templateParams, "6GcWAv-A2crYJ7gHh")
+            .then((response) => {
+                console.log("EMAIL ENVIADO", response.status, response.text)
+                setName('')
+                setEmail('')
+                setMessage('')
+            }, (err) => {
+                console.log("ERROR", err);
+
+            })
+    }
+
     return (
         <main>
             {/* INICIO SECAO PARTE DE CIMA TOPO */}
@@ -462,9 +496,13 @@ function Pagina() {
                 </div>
                 <SecaoLoalizacaoBaixo>
                     <SecaoLocalizacaoBaixoTitulo>Deixe uma mensagem</SecaoLocalizacaoBaixoTitulo>
-                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Nome" />
-                    <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Telefone" />
-                    <SecaoLoalizacaoBaixoTArea name="" id="" rows={6} cols={100} placeholder="Digite uma mensagem"></SecaoLoalizacaoBaixoTArea>
+                    <form action="" onSubmit={sendEmail}>
+                        <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Nome" name="name" />
+                        <SecaoLoalizacaoBaixoinput type="text" placeholder="Seu Email" name="email" />
+                        <SecaoLoalizacaoBaixoTArea name="message" id="" rows={6} cols={100} placeholder="Digite uma mensagem"></SecaoLoalizacaoBaixoTArea>
+                    </form>
+
+
                     <SecaoLoalizacaoBaixoEnviar href="">Enviar</SecaoLoalizacaoBaixoEnviar>
                 </SecaoLoalizacaoBaixo>
             </SecaoLocalizacao>
