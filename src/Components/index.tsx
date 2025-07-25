@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import emailjs from '@emailjs/browser'
-import { useState } from "react"
 
 import logo from "./assets/logo.png"
 import advogado from "./assets/advogada.png"
