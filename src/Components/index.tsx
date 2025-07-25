@@ -321,7 +321,7 @@ function mouseScroll() {
         const sectionTop = (section.getBoundingClientRect().top - height) < 0
         if (sectionTop) {
             section.classList.add('ativo')
-        }
+        } 
     })
 }
 
