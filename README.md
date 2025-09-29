@@ -12,9 +12,10 @@
   <li><b>JavaScript</b> - React.js - TypeScript -styled-components - Vite</li>
 </ul>
 
-<h2>⚙️ Funcionalidades</h2>
+<h2>✨ Funcionalidades</h2>
 <ul>
   <li>Mostrar Serviços</li>
   <li>Mostrar Advogados</li>
   <li>Mostrar Contato e Localização</li>
 </ul>
+
