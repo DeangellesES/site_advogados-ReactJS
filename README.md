@@ -9,7 +9,7 @@
 
 <h2>🚀 Tecnologias Utilizadas</h2>
 <ul>
-  <li><b>JavaScript</b> - React.js - TypeScript -styled-components - Vite</li>
+  <li><b>JavaScript</b> - React.js - TypeScript - styled-components - Vite</li>
 </ul>
 
 <h2>✨ Funcionalidades</h2>
@@ -19,3 +19,13 @@
   <li>Mostrar Contato e Localização</li>
 </ul>
 
+<h2>⚙️ Detalhes Técnicos</h2>
+<ul>
+  <li>Paradigma de programação Estruturado</li>
+  <li>simbolo na aba em react</li>
+  <li>contato direto para o whatsapp</li>
+  <li>styled-components para estilização do site</li>
+  <li>icones utlizado do fontawesome</li>
+  <li>display grid e flex utilizado</li>
+  <li>animações com JavaScript e CSS</li>
+</ul>
